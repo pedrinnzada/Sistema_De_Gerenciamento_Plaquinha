@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plaquinhas NFC — Painel de Vendas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">]
+
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="icon-badge">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17 2L2 9.5L10.5 12.5L13.5 21L17 2Z" fill="var(--accent)" stroke="var(--accent)" stroke-width="1.2" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div>
+      <h1>Plaquinhas NFC</h1>
+      <p>Painel de vendas e faturamento</p>
+    </div>
+  </header>
+
+  <!-- HERO: Faturamento + Meta -->
+  <div class="card hero">
+    <p class="card-title">Faturamento estimado do mês</p>
+    <div class="big-number" id="faturamentoDisplay">R$ 0,00</div>
+    <div class="goal-row">
+      <span id="goalText">Meta: R$ 0,00</span>
+      <button type="button" id="toggleGoalEdit">alterar meta</button>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill" style="width:0%"></div>
+    </div>
+    <div class="goal-edit" id="goalEdit">
+      <input type="number" id="goalInput" min="0" step="1" placeholder="Nova meta (R$)">
+      <button class="btn-add" id="saveGoal" type="button">Salvar</button>
+    </div>
+  </div>
+
+  <!-- Estoque + Preço unitário -->
+  <div class="grid-2">
+    <div class="card">
+      <p class="card-title">Estoque de plaquinhas</p>
+      <div class="stat-value" id="stockRemainingDisplay">0</div>
+      <label class="field-label" for="stockInput">Total de unidades que temos</label>
+      <input type="number" id="stockInput" min="0" step="1">
+    </div>
+    <div class="card">
+      <p class="card-title">Preço unitário de venda</p>
+      <div class="stat-value" id="unitPriceDisplay">R$ 0,00</div>
+      <label class="field-label" for="unitPriceInput">Valor por plaquinha (R$)</label>
+      <input type="number" id="unitPriceInput" min="0" step="0.01">
+    </div>
+  </div>
+
+  <!-- Vendedores -->
+  <p class="section-heading">Vendedores</p>
+  <div class="sellers-grid" id="sellersGrid"></div>
+
+  <!-- Gastos -->
+  <p class="section-heading">Gastos com a produção</p>
+  <div class="card">
+    <div id="expensesList"></div>
+    <form class="add-expense-form" id="expenseForm">
+      <input type="text" name="desc" placeholder="Descrição (ex: material)" required>
+      <input type="number" name="value" placeholder="R$" min="0" step="0.01" required>
+      <button class="btn-add" type="submit">+</button>
+    </form>
+    <div class="expenses-total">
+      <span>Total de gastos</span>
+      <strong id="expensesTotalDisplay">R$ 0,00</strong>
+    </div>
+  </div>
+
+  <!-- Resumo -->
+  <p class="section-heading">Resumo</p>
+  <div class="card">
+    <div class="resumo-row">
+      <span>Faturamento estimado</span>
+      <span class="val pos" id="resumoFaturamento">R$ 0,00</span>
+    </div>
+    <div class="resumo-row">
+      <span>Gastos</span>
+      <span class="val neg" id="resumoGastos">R$ 0,00</span>
+    </div>
+    <div class="resumo-row total">
+      <span>Lucro estimado</span>
+      <span class="val" id="resumoLucro">R$ 0,00</span>
+    </div>
+  </div>
+
+  <footer>Os dados ficam salvos neste dispositivo.</footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
